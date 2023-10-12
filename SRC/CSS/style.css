@@ -1,0 +1,104 @@
+
+
+body{
+    background: rgb(188, 236, 255);
+    width: 100%;
+    min-height: 100%;
+    
+    
+}
+
+header{
+    width: 100%;
+    
+    min-height: 40px;
+    background-color: blue;
+}
+
+.container{
+   
+}
+
+
+main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    min-height: 80%;
+  }
+  
+  .left_side {
+    flex-basis: 30%;
+    
+    background-color: aqua;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    
+    
+  }
+  
+  .central_side {
+    flex-basis: 80%;
+    
+    background-color: blueviolet;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    
+  }
+  
+  .right_side {
+    flex-basis: 30%;
+    
+    background-color: bisque;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+  }
+
+/**/
+
+.eleccion{
+    
+  width: 40%;
+  height: 16%;
+  margin: auto;
+  padding: 2%;
+    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+    
+}
+
+#piedra{
+  width: 100%;
+  height: auto;
+  
+}
+#papel{
+  width: 100%;
+  height: auto;
+  
+}
+#tijera{
+  width: 100%;
+  height: auto;
+  
+}
+#lagarto{
+  width: 100%;
+  height: auto;
+  
+}
+#spock{
+  width: 100%;
+  height: auto;
+  
+}
+
+
+
