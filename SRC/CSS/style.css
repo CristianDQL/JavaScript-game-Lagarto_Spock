@@ -26,6 +26,14 @@ body{
   }
 }
 
+#salon {
+  position: fixed;  
+  
+  width: 100vw;  
+  height: 100vh;  
+  object-fit: cover;  
+  object-position: center;  
+}
 
 
 main {
@@ -35,6 +43,8 @@ main {
     height: auto;
     min-height: 80%;
   }
+
+  
   
   .left_side {
     flex-basis: 30%;
@@ -113,6 +123,42 @@ main {
   
   
 }
+#piedra_rival{
+  width: 100%;
+  height: auto;
+  
+}
+#papel_rival{
+  width: 100%;
+  height: auto;
+  
+}
+#tijera_rival{
+  width: 100%;
+  height: auto;
+  
+}
+#lagarto_rival{
+  width: 100%;
+  height: auto;
+  
+}
+#spock_rival{
+  width: 100%;
+  height: auto;
+  
+}
+
+.rival{
+  text-align: center;
+  
+  
+}
+
+.eleccion img {
+  transition: transform 0.5s ease-in-out;
+}
+
 
 /**/
 
