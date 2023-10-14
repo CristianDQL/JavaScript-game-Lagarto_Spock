@@ -16,10 +16,15 @@ let salon;
 let imagenes;
 let piedra;
 let papel;
-let tijera;
+let tijeras;
 let lagarto;
 let spock;
 
+//marcador
+let marcador;
+let playerScore = 0;
+let enemyScore = 0;
+let resultado;
 
 
 
@@ -48,9 +53,18 @@ function elementAccess (){
     
     piedra = document.getElementById('piedra');
     papel = document.getElementById('papel');
-    tijera = document.getElementById('tijera');
+    tijeras = document.getElementById('tijeras');
     lagarto = document.getElementById('lagarto');
-    spock = document.getElementById('spock')
+    spock = document.getElementById('spock');
+
+    //marcador
+    marcador = document.getElementById('marcador');
+    //resultado = document.getElementById('resultado');
+    //playerScore = document.getElementById('playerScore');
+    //enemyScore = document.getElementById('enemyScore');
+
+   
+
     
     
     
@@ -93,9 +107,17 @@ function listenerGroup (){
 //elegir una opción
     for(let i = 0; i< imagenes.length; i++ )
     imagenes[i].addEventListener("click", ()=>{
-        
-        marcador();
-    })
+    //recojo el objeto return y lo igualo.
+    let scoreResult = score(imagenes[i]);
+    //actualizo el HTML con el return de los objetos.
+    
+    
+    document.getElementById('playerScore').textContent = scoreResult.playerScore;
+    document.getElementById('enemyScore').textContent = scoreResult.enemyScore;
+    document.getElementById('resultado').textContent = scoreResult.resultado;
+
+         
+    });
 
 
 
@@ -110,119 +132,138 @@ function startGame(){
     salon.style.display = 'none';
 }
 
-//LUCHAAAA
+//LUCHA: fn número random + score
 
+//Función que me da un número al azar
 function turnoRival(){
-    //CREAR UNA FUNCION RANDOM, PARA QUE ME DE UN RESULTADO Y LO USE COMO TURNOrIVAL EN EL IF.
+    return Math.floor(Math.random()*5);
 }
 
-function marcador(){
-    let playerScore = 0;
-    let enemyScore = 0;
-    let resultado = 0;
+function score(opcionJugador){ //opcion jugador = parámetro del score del listener, esta variable la igualo al de arriba.
+    
+    let resultado = "";
+    let turno_rival = turnoRival();
 
-    if(imagenes[i] == tijeras && turnoRival == tijeras){
+    while(playerScore < 5 && enemyScore < 5){
+    if(opcionJugador == tijeras && turno_rival == tijeras){ //Aquí igualo el número al azar, con la variable, que esta contenida en imagenes, en el DOM.
         playerScore += 0;
         enemyScore += 0;
         resultado = "¡NEUTRALIZADOS!"; //tú ganas!
-    }else if (turno == tijeras && turnoRival == papel){
+    }else if (opcionJugador== tijeras && turno_rival == 1){
         playerScore += 1;
         enemyScore += 0;
         resultado = "TIJERAS CORTAN PAPEL";
-    }else if (turno == papel && turnoRival == papel){
+    }else if (opcionJugador == papel && turno_rival == 1){
         playerScore += 0;
         enemyScore += 0;
         resultado = "¡NEUTRALIZADOS!";
-    }else if (turno == papel && turnoRival == piedra){
+    }else if (opcionJugador == papel && turno_rival == 0){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡PAPEL TAPA PIEDRA!";
-    }else if (turno == piedra && turnoRival == piedra){
+    }else if (opcionJugador == piedra && turno_rival == 0){
         playerScore += 0;
         enemyScore += 0;
         resultado = "¡NEUTRALIZADOS!";
-    }else if (turno == piedra && turnoRival == lagarto){
+    }else if (opcionJugador == piedra && turno_rival == 3){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡PIEDRA APLASTA LAGARTO!";
-    }else if (turno == lagarto && turnoRival == lagarto){
+    }else if (opcionJugador == lagarto && turno_rival == 3){
         playerScore += 0;
         enemyScore += 0;
         resultado = "¡NEUTRALIZADOS!";
-    }else if (turno == lagarto && turnoRival == spock){
+    }else if (opcionJugador== lagarto && turno_rival == 4){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡LAGARTO ENVENENA A SPOCK!";
-    }else if (turno == spock && turnoRival == spock){
+    }else if (opcionJugador == spock && turno_rival == 4){
             playerScore += 0;
             enemyScore += 0;
             resultado = "¡NEUTRALIZADOS!";
-    }else if (turno == spock && turnoRival == tijeras){
+    }else if (opcionJugador == spock && turno_rival == 2){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡SPOCK ROMPE TIJERAS!";
-    }else if (turno == tijeras && turnoRival == lagarto){
+    }else if (opcionJugador== tijeras && turno_rival == 3){
             playerScore += 1;
             enemyScore += 0;
             resultado = "¡TIJERAS DECAPITAN LAGARTO!";
-    }else if (turno == lagarto && turnoRival == papel){
+    }else if (opcionJugador == lagarto && turno_rival == 1){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡LAGARTO DEVORA PAPEL!";
-    }else if (turno == papel && turnoRival == spock){
+    }else if (opcionJugador == papel && turno_rival == 4){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡PAPEL DESAUTORIZA A SPOCK!";
-    }else if (turno == spock && turnoRival == piedra){
+    }else if (opcionJugador== spock && turno_rival == 0){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡SPOCK VAPORIZA PIEDRA!";
-    }else if (turno == piedra && turnoRival == tijeras){
+    }else if (opcionJugador== piedra && turno_rival == 2){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡COMO SIEMPRE, PIEDRA APLASTA TIJERAS!";
-    }else if (turnoRival == tijeras && turno == papel){
+    }else if (turno_rival == 2 && opcionJugador== papel){
         playerScore += 0;
         enemyScore += 1;
         resultado = "TIJERAS CORTAN PAPEL";
-    }else if (turnoRival == papel && turno == piedra){
+    }else if (turno_rival == 1 && opcionJugador == piedra){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡PAPEL TAPA PIEDRA!";
-    }else if (turnoRival == piedra && turno == lagarto){
+    }else if (turno_rival == 0 && opcionJugador == lagarto){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡PIEDRA APLASTA LAGARTO!";
-    }else if (turnoRival == lagarto && turno == spock){
+    }else if (turno_rival == 3 && opcionJugador== spock){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡LAGARTO ENVENENA A SPOCK!";
-    }else if (turnoRival == spock && turno == tijeras){
+    }else if (turno_rival == 4 && opcionJugador == tijeras){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡SPOCK ROMPE TIJERAS!";
-    }else if (turnoRival == tijeras && turno == lagarto){
+    }else if (turno_rival == 2 && opcionJugador == lagarto){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡TIJERAS DECAPITAN LAGARTO!";
-    }else if (turnoRival == lagarto && turno == papel){
+    }else if (turno_rival == 3 && opcionJugador == papel){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡LAGARTO DEVORA PAPEL!";
-    }else if (turnoRival == papel && turno == spock){
+    }else if (turno_rival == 1 && opcionJugador == spock){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡PAPEL DESAUTORIZA A SPOCK!";
-    }else if (turnoRival == spock && turno == piedra){
+    }else if (turno_rival == 4 && opcionJugador == piedra){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡SPOCK VAPORIZA PIEDRA!";
-    }else if (turnoRival == piedra && turno == tijeras){
+    }else if (turno_rival == 0 && opcionJugador == tijeras){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡COMO SIEMPRE, PIEDRA APLASTA TIJERAS!";
     } 
-   
+
+    if(playerScore === 5){
+        resultado = "¡Ganaste!"
+    }else if(enemyScore === 5){
+        resultado += " ¡Has perdido, ZAS en toda la boca!"
+
+    }
+
+    //retorno un objeto, con c/ resultado, para utilzarlo fuera.
+  
+    return {
+        playerScore: playerScore,
+        enemyScore: enemyScore,
+        resultado: resultado
+       };
+
+}
+
 }
 
 
