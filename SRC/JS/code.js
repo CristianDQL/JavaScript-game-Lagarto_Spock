@@ -116,6 +116,8 @@ function listenerGroup (){
     document.getElementById('enemyScore').textContent = scoreResult.enemyScore;
     document.getElementById('resultado').textContent = scoreResult.resultado;
 
+    eleccion(imagenes[i]);
+    //eleccionRival();
          
     });
 
@@ -144,107 +146,138 @@ function score(opcionJugador){ //opcion jugador = parámetro del score del liste
     let resultado = "";
     let turno_rival = turnoRival();
 
+    //elección del rival
+    let eleccion = document.getElementById("eleccion_rival");
+    eleccion.innerHTML = "";
+
+  
+    
     while(playerScore < 5 && enemyScore < 5){
     if(opcionJugador == tijeras && turno_rival == tijeras){ //Aquí igualo el número al azar, con la variable, que esta contenida en imagenes, en el DOM.
         playerScore += 0;
         enemyScore += 0;
         resultado = "¡NEUTRALIZADOS!"; //tú ganas!
+        
     }else if (opcionJugador== tijeras && turno_rival == 1){
         playerScore += 1;
         enemyScore += 0;
         resultado = "TIJERAS CORTAN PAPEL";
+        eleccion.src = papel.src;
     }else if (opcionJugador == papel && turno_rival == 1){
         playerScore += 0;
         enemyScore += 0;
         resultado = "¡NEUTRALIZADOS!";
+        eleccion.src = papel.src;
     }else if (opcionJugador == papel && turno_rival == 0){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡PAPEL TAPA PIEDRA!";
+        eleccion.src = piedra.src;
     }else if (opcionJugador == piedra && turno_rival == 0){
         playerScore += 0;
         enemyScore += 0;
         resultado = "¡NEUTRALIZADOS!";
+        eleccion.src = piedra.src;
     }else if (opcionJugador == piedra && turno_rival == 3){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡PIEDRA APLASTA LAGARTO!";
+        eleccion.src = lagarto.src;
     }else if (opcionJugador == lagarto && turno_rival == 3){
         playerScore += 0;
         enemyScore += 0;
         resultado = "¡NEUTRALIZADOS!";
+        eleccion.src = lagarto.src;
     }else if (opcionJugador== lagarto && turno_rival == 4){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡LAGARTO ENVENENA A SPOCK!";
+        eleccion.src = spock.src;
     }else if (opcionJugador == spock && turno_rival == 4){
             playerScore += 0;
             enemyScore += 0;
             resultado = "¡NEUTRALIZADOS!";
+            eleccion.src = spock.src;
     }else if (opcionJugador == spock && turno_rival == 2){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡SPOCK ROMPE TIJERAS!";
+        eleccion.src = tijeras.src;
     }else if (opcionJugador== tijeras && turno_rival == 3){
             playerScore += 1;
             enemyScore += 0;
             resultado = "¡TIJERAS DECAPITAN LAGARTO!";
+            eleccion.src = lagarto.src;
     }else if (opcionJugador == lagarto && turno_rival == 1){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡LAGARTO DEVORA PAPEL!";
+        eleccion.src = papel.src;
     }else if (opcionJugador == papel && turno_rival == 4){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡PAPEL DESAUTORIZA A SPOCK!";
+        eleccion.src = spock.src;
     }else if (opcionJugador== spock && turno_rival == 0){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡SPOCK VAPORIZA PIEDRA!";
+        eleccion.src = piedra.src;
     }else if (opcionJugador== piedra && turno_rival == 2){
         playerScore += 1;
         enemyScore += 0;
         resultado = "¡COMO SIEMPRE, PIEDRA APLASTA TIJERAS!";
+        eleccion.src = tijeras.src;
     }else if (turno_rival == 2 && opcionJugador== papel){
         playerScore += 0;
         enemyScore += 1;
         resultado = "TIJERAS CORTAN PAPEL";
+        eleccion.src = tijeras.src;
     }else if (turno_rival == 1 && opcionJugador == piedra){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡PAPEL TAPA PIEDRA!";
+        eleccion.src = papel.src;
     }else if (turno_rival == 0 && opcionJugador == lagarto){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡PIEDRA APLASTA LAGARTO!";
+        eleccion.src = piedra.src;
     }else if (turno_rival == 3 && opcionJugador== spock){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡LAGARTO ENVENENA A SPOCK!";
+        eleccion.src = lagarto.src;
     }else if (turno_rival == 4 && opcionJugador == tijeras){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡SPOCK ROMPE TIJERAS!";
+        eleccion.src = spock.src;
     }else if (turno_rival == 2 && opcionJugador == lagarto){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡TIJERAS DECAPITAN LAGARTO!";
+        eleccion.src = tijeras.src;
     }else if (turno_rival == 3 && opcionJugador == papel){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡LAGARTO DEVORA PAPEL!";
+        eleccion.src = lagarto.src;
     }else if (turno_rival == 1 && opcionJugador == spock){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡PAPEL DESAUTORIZA A SPOCK!";
+        eleccion.src = papel.src;
     }else if (turno_rival == 4 && opcionJugador == piedra){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡SPOCK VAPORIZA PIEDRA!";
+        eleccion.src = spock.src;
     }else if (turno_rival == 0 && opcionJugador == tijeras){
         playerScore += 0;
         enemyScore += 1;
         resultado = "¡COMO SIEMPRE, PIEDRA APLASTA TIJERAS!";
+        eleccion.src = piedra.src;
     } 
 
     if(playerScore === 5){
@@ -254,8 +287,11 @@ function score(opcionJugador){ //opcion jugador = parámetro del score del liste
 
     }
 
+    
+    
+
     //retorno un objeto, con c/ resultado, para utilzarlo fuera.
-  
+    
     return {
         playerScore: playerScore,
         enemyScore: enemyScore,
@@ -265,6 +301,58 @@ function score(opcionJugador){ //opcion jugador = parámetro del score del liste
 }
 
 }
+
+function eleccion(opcionJugador){
+    let eleccionPlayer = document.getElementById("eleccion_player");
+    eleccionPlayer.innerHTML = "";      //limpiosu contenido antes de agregar la nueva imagen.
+    
+    if(opcionJugador == piedra){
+        return eleccionPlayer.src = piedra.src;
+    }else if (opcionJugador == papel){
+        return  eleccionPlayer.src = papel.src;
+    }else if (opcionJugador == tijeras){
+        return  eleccionPlayer.src = tijeras.src;
+    }else if (opcionJugador == lagarto){
+        return  eleccionPlayer.src = lagarto.src;
+    }else if (opcionJugador == spock){
+        return  eleccionPlayer.src = spock.src;
+    }
+}
+
+//me falta:
+//-aparezca el nombre introducido en mi seccion-
+
+/*function eleccionRival(turno_rival){  //lo metí dentro del codigo.
+    let eleccion = document.getElementById("eleccion_rival");
+    eleccion.innerHTML = "";
+
+    if(turno_rival == 0){
+        return eleccionPlayer.src = piedra.src;
+    }else if (opcionJugador == 1){
+        return  eleccionPlayer.src = papel.src;
+    }else if (opcionJugador == 2){
+        return  eleccionPlayer.src = tijeras.src;
+    }else if (opcionJugador == 3){
+        return  eleccionPlayer.src = lagarto.src;
+    }else if (opcionJugador == 4){
+        return  eleccionPlayer.src = spock.src;
+    }
+
+}*/
+
+
+
+
+
+
+//AÑADIR EN ESA APRTE, LA ELECCIÓN DEL PLAYER Y DEL RIVAL EN CADA TURNO, AL LADO DEL VS.
+
+
+
+
+
+
+
 
 
 //funcion activa el juego cuando hago el submit

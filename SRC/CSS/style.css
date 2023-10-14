@@ -50,7 +50,7 @@ main {
   .left_side {
     flex-basis: 30%;
     
-    background-color: aqua;
+    background-color: rgb(188, 236, 255);
     width: 100%;
     height: auto;
     min-height: 100vh;
@@ -61,7 +61,7 @@ main {
   .central_side {
     flex-basis: 80%;
     
-    background-color: blueviolet;
+    background-color: rgb(188, 236, 255);
     width: 100%;
     height: auto;
     min-height: 100vh;
@@ -71,7 +71,7 @@ main {
   .right_side {
     flex-basis: 30%;
     
-    background-color: bisque;
+    background-color: rgb(188, 236, 255);
     width: 100%;
     height: auto;
     min-height: 100vh;
@@ -92,6 +92,8 @@ main {
   
     
 }
+
+
 
 #piedra{
   width: 100%;
@@ -178,6 +180,11 @@ main {
   
 }
 
+.img-stilo{
+  width: 50%;
+  height: auto;
+}
+
 .vs{
   display: inline-block;
   text-align: center;
@@ -188,7 +195,7 @@ main {
 .eleccion_rival{
   display: inline-block;
   text-align: center;
-  width: 3%;
+  width: 30%;
   height: auto;
 
 }
